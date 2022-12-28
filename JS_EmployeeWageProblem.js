@@ -54,3 +54,14 @@ empCheck = Math.floor(Math.random() * 10 % 3);
 empHours = getWorkingHours(empCheck);
 empWage = empHours * WAGE_PER_HOUR;
 console.log("UC3 - Employee Wage: " + empWage);
+
+//UC4
+const NUM_OF_WORKING_DAYS = 20;
+empHours = 0;
+for (let day = 0; day < NUM_OF_WORKING_DAYS; day++)
+{
+    empCheck = Math.floor(Math.random() * 10 % 3);
+    empHours += getWorkingHours(empCheck);
+}
+empWage = empHours * WAGE_PER_HOUR;
+console.log("UC4 - Total Hours: " + empHours + ", Employee Wage: " + empWage);
