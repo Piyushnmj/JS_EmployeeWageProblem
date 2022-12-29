@@ -97,3 +97,69 @@ while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS
 empWage = calcDailyWage(totalEmpHrs);
 console.log("UC6 - Total Days: " + totalWorkingDays + ", Total Hours: " + totalEmpHrs + ", Employee Wage: " + empWage);
 
+//UC7a
+let totalEmpWage = 0;
+function sum(dailyWage)
+{
+    totalEmpWage += dailyWage;
+}
+empDailyWageArr.forEach(sum);
+console.log("UC7a - Total Days: " + totalWorkingDays + ", Total Hours: " + totalEmpHrs + ", Employee Wage: " + totalEmpWage);
+
+function totalWages(totalWage, dailyWage)
+{
+    return totalWage + dailyWage;
+}
+console.log("UC7a - Employee Wage with reduce: " + empDailyWageArr.reduce(totalWages, 0));
+
+//UC7b
+let dailyCntr = 0;
+function mapDayWithWage(dailyWage)
+{
+    dailyCntr++;
+    return dailyCntr + " = " + dailyWage;
+}
+let mapDayWithWageArr = empDailyWageArr.map(mapDayWithWage);
+console.log("UC7b - Daily Wage Map");
+console.log(mapDayWithWageArr);
+
+//UC7c
+function fullTimeWage(dailyWage)
+{
+    return dailyWage.includes("160");
+}
+let fullDayWageArr = mapDayWithWageArr.filter(fullTimeWage);
+console.log("UC7c - Daily Wage Filter When FullTime Wage Earned");
+console.log(fullDayWageArr);
+
+//UC7d
+function findFullTimeWage(dailyWage)
+{
+    return dailyWage.includes("160");
+}
+console.log("UC7d - First Time FullTime Wage was earned on Day: " + mapDayWithWageArr.find(findFullTimeWage));
+
+//UC7e
+function isAllFullTimeWage(dailyWage)
+{
+    return dailyWage.includes("160");
+}
+console.log("UC7e - Check All Element have FullTime Wage: " + fullDayWageArr.every(isAllFullTimeWage));
+
+//UC7f
+function isAnyPartTimeWage(dailyWage)
+{
+    return dailyWage.includes("80");
+}
+console.log("UC7f - Check If Any Part Time Wage: " + mapDayWithWageArr.some(isAllFullTimeWage));
+
+//UC7g
+function totalDaysWorked(numOfDays, dailyWage)
+{
+    if (dailyWage > 0)
+    {
+        return numOfDays+1;
+    }
+    return numOfDays;
+}
+console.log("UC7g - Number of Days Employee Worked: " + empDailyWageArr.reduce(totalDaysWorked, 0));
